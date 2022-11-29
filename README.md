@@ -1,32 +1,43 @@
-<<<<<<< HEAD
+
 # devops-task
-=======
-# devops-techtask
 
 ## Overview
+### Installation steps for Golang
+* snap install go --classic
+#### To Check the version
+* go version
+#### To execute main.go file
+* go build main.go
+* ./hello
+* GOT THE ERROR "panic: 'ping' in new path '/ping' conflicts with existing wildcard ':id' in existing prefix '/:id'" then changed the code by adding /ping/:id 
 
-Hopefully this tech task allows you to strut your stuff as much as you decide to!
+### Installation steps for Redis
+* apt install redis
+#### To check the version
+* redis-cli --version
+#### To check the status of the redis
+* systemctl status redis
+#### To Find and Edit Redis Configuration File for setting up password
+* vi /etc/redis/redis.conf
+* requirepass newpassword
+* systemctl restart redis
+##### Selected the database and set the value for ID
+* redis-cli
+* select 10(which is database 10)
+* SET id "1"
+* INCR id
+* GET id
+##### Passed the values using export
+* export PORT=8080
+* export REDIS_HOST=127.0.0.1
+* export REDIS_PORT=6379
+* export REDIS_PASSWORD=password
+* export REDIS_DB=10
+* export GIN_MODE=release
 
-This exercise should take you no more than a weekend. If you need any clarification, please don’t hesitate to ask us.
+![Screenshot from 2022-11-28 23-47-35](https://user-images.githubusercontent.com/106570070/204581106-56eac13d-382f-48ca-af19-128fdb639a57.png)
 
-## Task details
+### Installed docker and created a docker image using dockerfile
+### Installed Kubernetes and created a deployment and service files with ingress 
 
-This repository contains a simple golang service which serves a single endpoint: `/:id`. For each call to this endpoint, the service increments a counter, and returns the number of times the endpoint has been called for the given ID. State for the application is stored in and retrieved from redis, where the data is stored simply with `id` as the key, and the count as the value.
 
-We'd like to deploy this application, and all its dependencies (in this case, redis) on kubernetes. It should be accessible from outside the cluster via HTTP, and should be deployed with high-availability in mind. You are highly encouraged to use any infrastructure automation or deployment tools that you are familiar with to do this. 
-
-The entire solution should be able to run on an fresh ubuntu VM.
-
-You may modify the application code as you see fit, but ensure that the functionality remains the same.
-
-In your solution, include a readme containing the necessary steps to set up the environment, as well as to build, package and deploy the application. Also detail and explain your chosen architecture, as well as what tools were used in the deployment process.
-
-## Requirements
-
-- Simple to build and run
-- Application is able to be deployed on kubernetes and can be accessed from outside the cluster
-- Application must be able to survive the failure of one or more instances while staying highly-available
-- Redis must be password protected
-- Readme documents how to run the code and provides explanation regarding the implementation
-
->>>>>>> test files
