@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-deployment
+spec:
+  selector:
+    matchLabels:
+      component: go
+  template:
+    metadata:
+      labels:
+        component: go
+    spec:
+      containers:
+        - name: go
+          image: ramdaggumati11/devopstask:latest
+          stdin: true
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+            - name: REDIS_HOST
+              value: redis-cluster-service
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              value: pass
+            - name: REDIS_DB
+              value: "10"
+
+              
